@@ -42,6 +42,7 @@ public class Rabbit extends Animal
         age = 0;
         if(randomAge) {
             age = rand.nextInt(MAX_AGE);
+           
         }
     }
     
@@ -67,17 +68,17 @@ public class Rabbit extends Animal
         }
     }
 
-    /**
+    /*/**
      * Increase the age.
      * This could result in the rabbit's death.
      */
-    private void incrementAge()
+    /*private void incrementAge()
     {
         age++;
         if(age > MAX_AGE) {
             setDead();
         }
-    }
+    }*/
     
     /**
      * Check whether or not this rabbit is to give birth at this step.
@@ -103,21 +104,75 @@ public class Rabbit extends Animal
      * if it can breed.
      * @return The number of births (may be zero).
      */
-    private int breed()
+    /*private int breed()
     {
         int births = 0;
         if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;
-    }
+    }*/
 
     /**
      * A rabbit can breed if it has reached the breeding age.
      * @return true if the rabbit can breed, false otherwise.
      */
-    private boolean canBreed()
+    /*private boolean canBreed()
     {
-        return age >= BREEDING_AGE;
+       return age >= BREEDING_AGE;
+    }*/
+
+    /**
+     * mutator method for rabbit
+     */
+    public void setAge(int newage)
+    {
+        if (newage > MAX_AGE)
+        age = MAX_AGE;
+        else
+        age = newage;
     }
+    
+    /**
+     * accesor method for rabbit
+     */
+    private int getAge()
+    {
+    return age;    
+    }
+    
+    /**
+     * This is the concrete method for getBreedingAge abstract method from Animal Class.
+     * @return The age at which a rabbit starts to breed
+     */
+    public int getBreedingAge()
+    {
+        return BREEDING_AGE;
+    }
+    
+    /**
+     * This is the concrete method for getMaxAge abstract method from Animal Class.
+     * @return The max age of the rabbit
+     */
+    public int getMaxAge()
+    {
+        return MAX_AGE;
+    }
+    /**
+     * This is the concrete method for getBreedingProb from the Animal Class
+     * @return the BREEDING_PROBABILITY (constant)
+     */
+    protected  double getBreedingProb() 
+    {
+        return BREEDING_PROBABILITY;
+    }
+    /**
+     * This is the concrete method for getMaxLitterSize from the Animal Class
+     * @return the MAX_LITTER_SIZE
+     */
+    protected int getMaxLitterSize()
+    {
+        return MAX_LITTER_SIZE;
+    }
+
 }
